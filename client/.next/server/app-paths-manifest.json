@@ -1,0 +1,6 @@
+{
+  "/not-found": "app/not-found.js",
+  "/patient-contact-edit/[contactid]/page": "app/patient-contact-edit/[contactid]/page.js",
+  "/gohighlevel/oauth/page": "app/gohighlevel/oauth/page.js",
+  "/gohighlevel/patient-contact/page": "app/gohighlevel/patient-contact/page.js"
+}
