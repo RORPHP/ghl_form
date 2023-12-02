@@ -62,6 +62,14 @@ export default function Page({ params : {contactid} }) {
         return false
       }
       // console.log(result.contact.customFields)
+
+      setName(result.contact.firstName)
+
+      document.getElementsByName('name').forEach((name)=>{
+        name.value = result.contact.firstName
+        setName(result.contact.firstName)
+      })
+
       result.contact.customFields.map((customField)=>{
           if(customField.id == "obB3fTlgTd5ZOm6r2Vqh"){
               var opt = []
