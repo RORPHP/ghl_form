@@ -106,16 +106,17 @@ a {
 /* Custom css Start 30 Nov
 /*******/
 
-
 form {
     max-width: 1000px;
     margin: 30px auto;
+    padding: 0 15px;
 }
 form h1 {
     font-size: 20px;
     margin: 10px 0;
 }
-form label.page_label__vnnux {
+form label.page_label__vnnux,
+form label page_label__L8Cfv {
     display: flex;
     align-items: center;
 }
@@ -126,7 +127,8 @@ form input {
     border-radius: 4px;
     margin-right: 5px;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl {
+ul.page_ul__rmwC0 li.page_li__oJmyl,
+ul.page_ul__kMkza li.page_li__zO7O0 {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -134,10 +136,12 @@ ul.page_ul__rmwC0 li.page_li__oJmyl {
     padding: 10px 0;
     border-top: 1px solid #b2c1c1;
 }
-.page_ul__rmwC0 li.page_li__oJmyl ul.page_ul__rmwC0 {
+.page_ul__rmwC0 li.page_li__oJmyl ul.page_ul__rmwC0,
+.page_ul__kMkza li.page_li__zO7O0 ul.page_ul__kMkza {
     display: flex;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl li.page_li__oJmyl {
+ul.page_ul__rmwC0 li.page_li__oJmyl li.page_li__oJmyl,
+ul.page_ul__kMkza li.page_li__zO7O0 li.page_li__zO7O0 {
     border: none;
 }
 form button {
@@ -147,44 +151,76 @@ form button {
     border-radius: 4px;
     border: 1px solid #b2c1c1;
     cursor: pointer;
+    margin-right: 20px;
 }
-ul.page_ul__rmwC0 li label {
+ul.page_ul__rmwC0 li label,
+ul.page_ul__kMkza li label {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
 }
-form label.page_label__vnnux input[type="text"] {
+form label.page_label__vnnux input[type="text"],
+form label.page_label__L8Cfv input[type="text"] {
     margin-left: 10px;
 }
-form>label.page_label__vnnux {
+form>label.page_label__vnnux,
+form>label.page_label__L8Cfv {
     flex-wrap: wrap;
 }
-form>label.page_label__vnnux input[type="text"], ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0 input[type="text"] {
+form>label.page_label__vnnux input[type="text"],
+form>label.page_label__L8Cfv input[type="text"],
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0 input[type="text"],
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(4) ul.page_ul__kMkza input[type="text"] {
     width: 100%;
     margin: 10px 0 10px 0;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4),
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(4) {
     flex-wrap: wrap;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0 {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0,
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(4) ul.page_ul__kMkza {
     width: 100%;
     flex-wrap: wrap;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0 label.page_label__vnnux {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(4) ul.page_ul__rmwC0 label.page_label__vnnux,
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(4) ul.page_ul__kMkza label.page_label__L8Cfv {
     flex-wrap: wrap;
     width: 100%;
     margin-top: 10px;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(2) label.page_label__vnnux {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(2) label.page_label__vnnux,
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(2) label.page_label__L8Cfv {
     min-width: 200px;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(5) label.page_label__vnnux {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(5) label.page_label__vnnux,
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(5) label.page_label__L8Cfv {
     min-width: 150px;
 }
-ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(1) ul.page_ul__rmwC0 label.page_label__vnnux {
+ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(1) ul.page_ul__rmwC0 label.page_label__vnnux,
+ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(1) ul.page_ul__kMkza label.page_label__L8Cfv {
     min-width: unset;
 }
-
+@media (max-width: 1199px) {
+    ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(5) label.page_label__vnnux, ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(5) label.page_label__L8Cfv, ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(5) label.page_label__vnnux, ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(5) label.page_label__L8Cfv {
+        min-width: unset;
+    }   
+}
+@media (max-width: 767px) {
+    ul.page_ul__rmwC0 li.page_li__oJmyl:nth-of-type(2) label.page_label__vnnux,    
+    ul.page_ul__kMkza li.page_li__zO7O0:nth-of-type(2) label.page_label__L8Cfv {
+        min-width: unset;
+    }
+    ul.page_ul__rmwC0 li.page_li__oJmyl, ul.page_ul__kMkza li.page_li__zO7O0,
+    .page_ul__rmwC0 li.page_li__oJmyl ul.page_ul__rmwC0,
+    .page_ul__kMkza li.page_li__zO7O0 ul.page_ul__kMkza {
+        flex-wrap: wrap;
+    }
+    form button {
+        margin-bottom: 10px;
+        min-width: 230px;
+    }
+}
 
 /*******/
 /* Custom css Ends 30 Nov

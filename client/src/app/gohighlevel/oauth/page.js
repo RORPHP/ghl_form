@@ -3,20 +3,12 @@ import Image from 'next/image'
 import styles from '../../page.module.css'
 import * as React from "react";
 
-// import fs from 'fs';
-// import path from 'path';
-
-
 export default function OAuth() {
 
-  const api_url = 'http://localhost:3001'
-
-  // const dataFilePath = path.join(process.cwd(), 'json/token.json');
-  // console.log(dataFilePath)
   const client_id = '656833bb18e41b56516d261a-lpkurjqq'
   const client_secret = '3e89da6d-5547-457a-86a2-1ad98e42f270'
   const user_type = 'Location'
-  const redirect_uri = 'http://localhost:3000/gohighlevel/oauth'
+  const redirect_uri = 'http://stagingwebsites.info:3000/gohighlevel/oauth'
 
   const [isLoaded,setIsLoaded] = React.useState(false)
   const [authCode,setAuthCode] = React.useState(null)
@@ -60,7 +52,7 @@ export default function OAuth() {
           result = JSON.parse(result)
 
           if(result.hasOwnProperty('refresh_token')){
-            const res = fetch(api_url+"/token/save", {
+            const res = fetch("/api/token/save", {
               method: "POST",
               body: JSON.stringify({
                 token: result

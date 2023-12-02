@@ -1,18 +1,14 @@
 "use client"
-// import { FormEvent,useState } from 'react'
+
 import * as React from "react";
 import styles from './page.module.css'
 
 export default function Page() {
 
-  const api_url = 'http://localhost:3001'
-
-  // const dataFilePath = path.join(process.cwd(), 'json/token.json');
-  // console.log(dataFilePath)
   const client_id = '656833bb18e41b56516d261a-lpkurjqq'
   const client_secret = '3e89da6d-5547-457a-86a2-1ad98e42f270'
   const user_type = 'Location'
-  const redirect_uri = 'http://localhost:3000/gohighlevel/oauth'
+  const redirect_uri = 'http://stagingwebsites.info:3000/gohighlevel/oauth'
 
   const [name,setName] = React.useState('')
   const [hnoAnamnese,setHnoAnamnese] = React.useState([])
@@ -23,7 +19,6 @@ export default function Page() {
   const [hnoAnamneseSonstiges,setHnoAnamneseSonstiges] = React.useState('')
 
   var contactName = (e) => {
-    // console.log(e.target.value)
     setName(e.target.value)
   }
 
@@ -115,7 +110,7 @@ export default function Page() {
   var refreshAccessToken = (refreshToken) => {
       event.preventDefault()
 
-      var res = fetch(api_url+"/token/get", {
+      var res = fetch("/api/token/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -150,7 +145,7 @@ export default function Page() {
             // console.log(result)
             result = JSON.parse(result)
             if(result.hasOwnProperty('refresh_token')){
-              const res = fetch(api_url+"/token/save", {
+              const res = fetch("/api/token/save", {
                 method: "POST",
                 body: JSON.stringify({
                   token: result
@@ -176,7 +171,7 @@ export default function Page() {
   var onSubmit = async (event) => {
     event.preventDefault()
 
-    var res = await fetch(api_url+"/token/get", {
+    var res = await fetch("/api/token/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
