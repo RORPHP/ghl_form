@@ -64,11 +64,11 @@ export default function Page({ params : {contactid} }) {
       }
       // console.log(result.contact.customFields)
 
-      setName(result.contact.firstName)
-
       document.getElementsByName('name').forEach((name)=>{
-        name.value = result.contact.firstName
-        setName(result.contact.firstName)
+        if(result.contact.hasOwnProperty('firstName')){
+            name.value = result.contact.firstName
+            setName(result.contact.firstName)
+        }
       })
 
       result.contact.customFields.map((customField)=>{
