@@ -118,9 +118,7 @@ export default function Page() {
       }).then(function(response){
         return response.json()
       }).then(function(data) {
-        data = JSON.parse(data.token)
-        // console.log(data.refresh_token)
-        // alert(data.token.refresh_token)
+        data = data.token
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -180,7 +178,7 @@ export default function Page() {
         return response.json()
       }).then(function(data) {
 
-          data = JSON.parse(data.token)
+          data = data.token
 
           if(data.hasOwnProperty('access_token')){
 

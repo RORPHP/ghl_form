@@ -32,7 +32,8 @@ export default function Page({ params : {contactid} }) {
         }).then(function(response){
           return response.json()
         }).then(function(data) {
-          data = JSON.parse(data.token)
+          // data = JSON.parse(data.token)
+          data = data.token
           // console.log(data)
           setGhlAccessToken(data)
           getGHLContact(data.access_token)
