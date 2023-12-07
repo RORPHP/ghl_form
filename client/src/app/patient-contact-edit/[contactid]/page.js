@@ -34,7 +34,7 @@ export default function Page({ params : {contactid} }) {
           return response.json()
         }).then(function(data) {
          if(data.hasOwnProperty('token')){
-            data = data.token
+            // data = data.token
             setGhlAccessToken(data)
             getGHLContact(data.access_token)
           }else{
