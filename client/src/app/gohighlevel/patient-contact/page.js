@@ -5,10 +5,10 @@ import styles from './page.module.css'
 
 export default function Page() {
 
-  const client_id = '656833bb18e41b56516d261a-lpkurjqq'
-  const client_secret = '3e89da6d-5547-457a-86a2-1ad98e42f270'
-  const user_type = 'Location'
-  const redirect_uri = 'http://stagingwebsites.info:3000/gohighlevel/oauth'
+  const client_id = process.env.NEXT_PUBLIC_GCP_CLIENT_ID
+  const client_secret = process.env.NEXT_PUBLIC_GCP_CLIENT_SECRET
+  const redirect_uri = process.env.NEXT_PUBLIC_GCP_REDIRECT_URL
+  const user_type = process.env.NEXT_PUBLIC_GHL_USER_TYPE
 
   const [name,setName] = React.useState('')
   const [hnoAnamnese,setHnoAnamnese] = React.useState([])
