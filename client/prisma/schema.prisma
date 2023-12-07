@@ -1,0 +1,21 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model oauth {
+  id            Int     @id @default(autoincrement())
+  location      String? @db.VarChar(255)
+  refresh_token String? @db.LongText
+  access_token  String? @db.LongText
+  user_id       String? @db.VarChar(255)
+  cc_token      String? @db.LongText
+  cc_url        String? @db.LongText
+  expire_at     String? @db.VarChar(255)
+}

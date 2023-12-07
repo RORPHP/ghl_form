@@ -33,11 +33,14 @@ export default function Page({ params : {contactid} }) {
         }).then(function(response){
           return response.json()
         }).then(function(data) {
-          // data = JSON.parse(data.token)
-          data = data.token
-          // console.log(data)
-          setGhlAccessToken(data)
-          getGHLContact(data.access_token)
+         if(data.hasOwnProperty('token')){
+            data = data.token
+            setGhlAccessToken(data)
+            getGHLContact(data.access_token)
+          }else{
+            alert('You do not have any access.')
+            return false
+          }
         })
     }
   },[ghlAccessToken,isLoaded])
