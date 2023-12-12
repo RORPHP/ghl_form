@@ -1,0 +1,186 @@
+
+
+
+
+/*******/
+/* Custom css Start 12 DEC
+/*******/
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.m-0 {
+    margin: 0 !important;
+}
+.form-section {
+    background-color: #f0f0f0;
+    max-width: 56rem;
+    padding: 1.25rem;
+    margin: 0  auto;
+    font-family: 'Inter', sans-serif;
+}
+.form-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.form-section label {
+    font-size: 16px;
+}
+.form-section input {
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.form-section input:focus {
+    outline: none;
+}
+.form-section input::placeholder {
+    color: #000000;
+    opacity: 0.8;
+}
+.first-input-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 12px;
+}
+.form-section .form-heading {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 22px;
+    font-weight: 600;
+}
+.info-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 20px;
+    margin: 20px auto;
+}
+.info-form li {
+    display: flex;
+    flex-direction: column;
+}
+.info-form li label {
+    margin-bottom: 4px;
+}   
+.form-section input::placeholder {
+    color: rgb(0 0 0 / 50%);
+    font-family: 'Inter', sans-serif;
+}
+.info-form li.address {
+    grid-column: span 2;
+}
+.two-col-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6px;
+}
+.one-col-row li:not(:last-child) {
+    margin-bottom: 6px;
+}
+.sub-heading {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.d-block {
+    display: flex;
+}
+.mr {
+    margin-right: 10px;
+}
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-end {
+    justify-content: flex-end;
+}
+.d-flex ul {
+    display: flex;
+    grid-gap: 10px;
+}
+.three-col-input ul {
+    flex-direction: column;
+    margin-top: 0;
+}
+.form-section input.border-input {
+    border-bottom: 1px solid #000000;
+    background: transparent;
+    border-radius: unset;
+    padding: 0px 10px;
+    margin-left: 6px;
+}
+.three-col-input ul li {
+    display: flex;
+    align-items: flex-end;
+}
+.full-row {
+    grid-column: span 2;
+    width: 100%;
+}
+.full-row input.border-input {
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 0;
+}
+.three-col-input li {
+    width: 100%;
+}
+.three-col-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.two-col-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.four-col-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.five-col-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.multi-content-row ul {
+    grid-gap: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.multi-content-row ul li {
+    margin-left: 20px;
+}
+.border-row {
+    border-bottom: 1px  solid #cecece;
+    padding: 10px 0;
+    margin: 0;
+}
+.tip-row {
+    border-top: 1px solid #cecece;
+    border-bottom: 1px solid #cecece;
+    padding: 10px 0 !important;
+}
+.NFR-width {
+    min-width: 270px;
+}
+.innere-w {
+    min-width: 280px;
+}
+
+
+/*******/
+/* Custom css Ends 12 DEC
+/*******/
+
+
+
+/*@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+*/

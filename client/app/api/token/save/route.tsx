@@ -7,13 +7,25 @@ import path from 'path';
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-// const tokenFilePath = path.join(process.cwd(), '/private/credentials/token.json');
+const tokenFilePath = path.join(process.cwd(), '/private/credentials/token.json');
 
 // To handle a POST request to /api
 export async function POST(request) {
   
   const body = await request.json();
-  
+  // const updatedData = JSON.stringify(body.token);
+  // await fsPromises.writeFile(tokenFilePath, updatedData);
+
+  // return NextResponse.json({response:'Authorisation successfull'}, { status: 200 });
+  // saveOAuth(body)
+  // .then((response) => {
+  //   return response.json()
+  // })
+  // .then((response) => {
+  //   return NextResponse.json({response:response}, { status: 200 });
+  // })
+
+  // var response =  await saveOAuth(body)
   var response =  await getOAuth(body)
 
   return NextResponse.json({response:response}, { status: 200 });
@@ -55,10 +67,12 @@ async function saveOAuth(body) {
         expire_at: date.toISOString()
       }
     })
+    // return res.status(200).json(newEntry, { success: true })
 
     return 'Authorisation successfull';
   } catch (error) {
     console.error('Request error', error)
+    // res.status(500).json({ response: 'Error creating question', success: false })
     return error;
   }
 }
@@ -71,6 +85,7 @@ async function updateOAuth(body) {
   try {
 
     const oauthUpdateObj = await prisma.oauth.update({
+      // where: { location: process.env.NEXT_PUBLIC_GHL_LOCATION },
       where: { id: 1 },
       data: { refresh_token: body.token.refresh_token,access_token: body.token.access_token,expire_at: date.toISOString() },
     })
@@ -78,6 +93,7 @@ async function updateOAuth(body) {
     return 'Authorisation updated successfully';
   } catch (error) {
     console.error('Request error', error)
+    // res.status(500).json({ response: 'Error creating question', success: false })
     return error;
   }
 }

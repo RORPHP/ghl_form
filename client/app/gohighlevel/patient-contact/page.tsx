@@ -1,17 +1,15 @@
 "use client"
+// import { FormEvent,useState } from 'react'
 import * as React from "react";
 import styles from './page.module.css'
 
-export default function Page({ params : {contactid} }) {
+export default function Page() {
 
   const client_id = process.env.NEXT_PUBLIC_GCP_CLIENT_ID
   const client_secret = process.env.NEXT_PUBLIC_GCP_CLIENT_SECRET
   const redirect_uri = process.env.NEXT_PUBLIC_GCP_REDIRECT_URL
   const user_type = process.env.NEXT_PUBLIC_GHL_USER_TYPE
 
-  const contactId = contactid
-
-  const [ghlAccessToken,setGhlAccessToken] = React.useState(null)
   const [name,setName] = React.useState('')
   const [hnoAnamnese,setHnoAnamnese] = React.useState([])
   const [hnoAnamneseAllergies,setHnoAnamneseAllergies] = React.useState([])
@@ -19,118 +17,6 @@ export default function Page({ params : {contactid} }) {
   const [hnoAnamneseNasenAbususSeit,setHnoAnamneseNasenAbususSeit] = React.useState('')
   const [hnoAnamneseLippenKieferGaumenspalte,setHnoAnamneseLippenKieferGaumenspalte] = React.useState('')
   const [hnoAnamneseSonstiges,setHnoAnamneseSonstiges] = React.useState('')
-  const [isLoaded,setIsLoaded] = React.useState(false)
-  
-
-  React.useEffect(() => {
-    setIsLoaded(true)
-    if(ghlAccessToken == null && isLoaded == true){
-        var res = fetch("/api/token/get", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }).then(function(response){
-          return response.json()
-        }).then(function(data) {
-         if(data.hasOwnProperty('token')){
-            // data = data.token
-            setGhlAccessToken(data)
-            getGHLContact(data.access_token)
-          }else{
-            alert('You do not have any access.')
-            return false
-          }
-        })
-    }
-  },[ghlAccessToken,isLoaded])
-  
-  var getGHLContact = async (access_token) => {
-
-    var myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Version", "2021-07-28");
-    myHeaders.append("Authorization", `Bearer ${access_token}`);
-
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-
-    fetch(`https://services.leadconnectorhq.com/contacts/${contactId}`, requestOptions)
-    .then(response => response.text())
-    .then((result) => {
-      result = JSON.parse(result)
-      if(result.hasOwnProperty('error')){
-        alert(result.error)
-        return false
-      }
-      // console.log(result.contact.customFields)
-
-      document.getElementsByName('name').forEach((name)=>{
-        if(result.contact.hasOwnProperty('firstName')){
-            name.value = result.contact.firstName
-            setName(result.contact.firstName)
-        }
-      })
-
-      result.contact.customFields.map((customField)=>{
-          if(customField.id == "obB3fTlgTd5ZOm6r2Vqh"){
-              var opt = []
-              customField.value.map((value)=>{
-                document.getElementsByName('hnoanamnese').forEach((hnoanamnese)=>{
-                  if(hnoanamnese.value == value){
-                    opt.push(value)
-                    hnoanamnese.checked = true
-                  }
-                })
-              })
-
-              setHnoAnamnese(opt)
-
-          }else if(customField.id == "TrE0VWKuPNnrn67QbYij"){
-              var opt = []
-              customField.value.map((value)=>{
-                document.getElementsByName('hnoanamese_allergie').forEach((hnoanamese_allergie)=>{
-                  if(hnoanamese_allergie.value == value){
-                    opt.push(value)
-                    hnoanamese_allergie.checked = true
-                  }
-                })
-              })
-              setHnoAnamneseAllergies(opt)
-          }else if(customField.id == "NhiAyYb5NkMxHwgFqfa9"){
-              document.getElementsByName('chronische_rhinitis_options').forEach((chronische_rhinitis_options)=>{
-                if(chronische_rhinitis_options.value == customField.value){
-                  chronische_rhinitis_options.checked = true
-                }
-              })
-              setHnoAnamneseChronischeRhinitis(customField.value)
-          }else if(customField.id == "rDP1C479njAjf63wClM9"){
-              document.getElementsByName('lippen_kiefer_gaumenspalte_opt').forEach((lippen_kiefer_gaumenspalte_opt)=>{
-                if(lippen_kiefer_gaumenspalte_opt.value == customField.value){
-                  lippen_kiefer_gaumenspalte_opt.checked = true
-                }
-              })
-              setHnoAnamneseLippenKieferGaumenspalte(customField.value)
-          }else if(customField.id == "lBHzEjpKz56uyMZx4TPo"){
-              document.getElementsByName('hnoanamese_chron_nasensprayabusus_seit').forEach((hnoanamese_chron_nasensprayabusus_seit)=>{
-                  hnoanamese_chron_nasensprayabusus_seit.value = customField.value
-              })
-              setHnoAnamneseNasenAbususSeit(customField.value)
-          }else if(customField.id == "Rh4FxpUb46ZNz34ODlNh"){
-              document.getElementsByName('hnoanamese_sonstiges').forEach((hnoanamese_sonstiges)=>{
-                  hnoanamese_sonstiges.value = customField.value
-              })
-              setHnoAnamneseSonstiges(customField.value)
-          }
-      })
-
-    })
-    .catch(error => console.log('error', error));
-
-  }
 
   var contactName = (e) => {
     // console.log(e.target.value)
@@ -141,51 +27,10 @@ export default function Page({ params : {contactid} }) {
     var opt = hnoAnamnese
     if(e.target.checked){
       opt.push(e.target.value)
-
-      if(e.target.value == 'Chron. Nasenspray-Abusus seit'){
-        document.getElementsByName('hnoanamese_chron_nasensprayabusus_seit').forEach((hnoanamese_chron_nasensprayabusus_seit) => {
-            hnoanamese_chron_nasensprayabusus_seit.disabled = false
-        })
-      }else if(e.target.value == 'Sonstiges'){
-        document.getElementsByName('hnoanamese_sonstiges').forEach((hnoanamese_sonstiges) => {
-            hnoanamese_sonstiges.disabled = false
-        })
-      }
-
       setHnoAnamnese(opt)
     }else{
       opt.splice(opt.indexOf(e.target.value), 1)
       setHnoAnamnese(opt)
-
-      if(e.target.value == 'Allergy'){
-        document.getElementsByName('hnoanamese_allergie').forEach((hnoanamese_allergie) => {
-            hnoanamese_allergie.checked = false
-        })
-        setHnoAnamneseAllergies([])
-      }else if(e.target.value == 'Chronische Rhinitis'){
-        document.getElementsByName('chronische_rhinitis_options').forEach((chronische_rhinitis_options) => {
-            chronische_rhinitis_options.checked = false
-        })
-        setHnoAnamneseChronischeRhinitis('')
-      }else if(e.target.value == 'Chron. Nasenspray-Abusus seit'){
-        document.getElementsByName('hnoanamese_chron_nasensprayabusus_seit').forEach((hnoanamese_chron_nasensprayabusus_seit) => {
-            hnoanamese_chron_nasensprayabusus_seit.value = ''
-            hnoanamese_chron_nasensprayabusus_seit.disabled = true
-        })
-        setHnoAnamneseNasenAbususSeit('')
-      }else if(e.target.value == 'Lippen-Kiefer-Gaumenspalte'){
-        document.getElementsByName('lippen_kiefer_gaumenspalte_opt').forEach((lippen_kiefer_gaumenspalte_opt) => {
-            lippen_kiefer_gaumenspalte_opt.checked = false
-        })
-        setHnoAnamneseLippenKieferGaumenspalte('')
-      }else if(e.target.value == 'Sonstiges'){
-        document.getElementsByName('hnoanamese_sonstiges').forEach((hnoanamese_sonstiges) => {
-            hnoanamese_sonstiges.value = ''
-            hnoanamese_sonstiges.disabled = true
-        })
-        setHnoAnamneseSonstiges('')
-      }
-
     }
 
   }
@@ -210,7 +55,6 @@ export default function Page({ params : {contactid} }) {
   }
 
   var contactHnoAnamneseChronischeRhinitis = (e) => {
-
 
     setHnoAnamneseChronischeRhinitis(e.target.value)
 
@@ -264,8 +108,21 @@ export default function Page({ params : {contactid} }) {
   }
 
   var refreshAccessToken = (refreshToken) => {
-        event.preventDefault()
-        
+      event.preventDefault()
+
+      // var res = fetch(api_url+"/token/get", {
+      var res = fetch("/api/token/get", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function(response){
+        return response.json()
+      }).then(function(data) {
+        // data = JSON.parse(data.token)
+        data = data.token
+        // console.log(data.refresh_token)
+        // alert(data.token.refresh_token)
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -273,7 +130,7 @@ export default function Page({ params : {contactid} }) {
         urlencoded.append("client_id", client_id);
         urlencoded.append("client_secret", client_secret);
         urlencoded.append("grant_type", "refresh_token");
-        urlencoded.append("refresh_token", ghlAccessToken.refresh_token);
+        urlencoded.append("refresh_token", data.refresh_token);
         urlencoded.append("redirect_uri", redirect_uri);
         urlencoded.append("user_type", user_type);
 
@@ -290,6 +147,7 @@ export default function Page({ params : {contactid} }) {
             // console.log(result)
             result = JSON.parse(result)
             if(result.hasOwnProperty('refresh_token')){
+              // const res = fetch(api_url+"/token/save", {
               const res = fetch("/api/token/save", {
                 method: "POST",
                 body: JSON.stringify({
@@ -309,23 +167,37 @@ export default function Page({ params : {contactid} }) {
 
         })
         .catch(error => console.log('error', error));
+      });
 
   }
 
   var onSubmit = async (event) => {
     event.preventDefault()
 
-    if(ghlAccessToken.hasOwnProperty('access_token')){
-        updateGHLRequest(ghlAccessToken.access_token,ghlAccessToken.locationId)
-    }
+    // var res = await fetch(api_url+"/token/get", {
+    var res = await fetch("/api/token/get", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function(response){
+        return response.json()
+      }).then(function(data) {
+
+          data = data.token
+
+          if(data.hasOwnProperty('access_token')){
+
+              makeGHLRequest(data.access_token,data.locationId)
+          }
+      })
 
   }
 
-  var updateGHLRequest = async (access_token,locationId) => {
-
-    var url = `https://services.leadconnectorhq.com/contacts/${contactId}`;
-    var options = {
-      method: 'PUT',
+  var makeGHLRequest = async (access_token,locationId) => {
+    const url = 'https://services.leadconnectorhq.com/contacts/';
+    const options = {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${access_token}`,
         Version: '2021-07-28',
@@ -336,8 +208,10 @@ export default function Page({ params : {contactid} }) {
             "firstName": name,
             "lastName": name,
             "name": name,
-            // "email": `${makeid(5)}@deos.com`,
-            // "phone": `+1 ${Math.floor(100000000 + Math.random() * 900000000)}`,
+            "email": `${makeid(5)}@deos.com`,
+            "locationId": locationId,
+            "gender": "male",
+            "phone": `+1 ${Math.floor(100000000 + Math.random() * 900000000)}`,
             "address1": "3535 1st St N",
             "city": "Dolomite",
             "state": "AL",
@@ -420,10 +294,10 @@ export default function Page({ params : {contactid} }) {
     };
 
     try {
-      var response = await fetch(url, options);
-      var data = await response.json();
+      const response = await fetch(url, options);
+      const data = await response.json();
       // console.log(data);
-      alert(`New Contact ID: ${data.contact.id} has been updated.`)
+      alert(`New Contact ID: ${data.contact.id} has been created.`)
     } catch (error) {
       alert(error)
     }
@@ -440,7 +314,7 @@ export default function Page({ params : {contactid} }) {
       <ul className={styles.ul}>
         <li className={styles.li}>
           <label className={styles.label}>
-            <input type="checkbox" name="hnoanamnese" value="Allergy" onChange={contactHnoAnamnese} />
+            <input type="checkbox" name="hnoanamnese" value="Allergy" onChange={contactHnoAnamnese}/>
             Allergy
           </label>
           <ul className={styles.ul}>
@@ -468,26 +342,26 @@ export default function Page({ params : {contactid} }) {
         </li>
         <li className={styles.li}>
           
-          
+          {/*<br/>*/}
           <label className={styles.ul}>
             <input type="checkbox" name="hnoanamnese" value="Chronische Rhinitis" onChange={contactHnoAnamnese}/>
             Chronische Rhinitis
           </label>
           <ul className={styles.ul}>
             <li className={styles.li}><label className={styles.label}>
-                  <input type="radio" data-id="NhiAyYb5NkMxHwgFqfa9" name="chronische_rhinitis_options" value="Chronische Rhinorrhoe" onChange={contactHnoAnamneseChronischeRhinitis}/>
+                  <input type="radio" name="NhiAyYb5NkMxHwgFqfa9" value="Chronische Rhinorrhoe" onChange={contactHnoAnamneseChronischeRhinitis}/>
                   Chronische Rhinorrhoe
                 </label>
             </li>
             <li className={styles.li}><label className={styles.label}>
-                  <input type="radio" data-id="NhiAyYb5NkMxHwgFqfa9" name="chronische_rhinitis_options" value="Pat. schnarcht nachts" onChange={contactHnoAnamneseChronischeRhinitis}/>
+                  <input type="radio" name="NhiAyYb5NkMxHwgFqfa9" value="Pat. schnarcht nachts" onChange={contactHnoAnamneseChronischeRhinitis}/>
                   Pat. schnarcht nachts
                 </label>
             </li>
           </ul>
         </li>
         
-        
+        {/*<br/>*/}
         <li className={styles.li}>
           <label className={styles.label}>
             <input type="checkbox" name="hnoanamnese" value="Chronische Nasenebenhöhlen Entzündungen" onChange={contactHnoAnamnese}/>
@@ -496,7 +370,7 @@ export default function Page({ params : {contactid} }) {
           
         </li>
         
-        
+        {/*<br/>*/}
         <li className={styles.li}>
           <label className={styles.label}>
             <input type="checkbox" name="hnoanamnese" value="Chron. Nasenspray-Abusus seit" onChange={contactHnoAnamnese}/>
@@ -505,14 +379,14 @@ export default function Page({ params : {contactid} }) {
           <ul className={styles.ul}>
             <li className={styles.li}>
                 <label className={styles.label}>HNO-ANAMESE_Chron. Nasenspray-Abusus Seit
-                
-                  <input type="text" data-id="lBHzEjpKz56uyMZx4TPo" name="hnoanamese_chron_nasensprayabusus_seit" onKeyUp={contactHnoAnamneseNasenAbususSeit}/>
+                {/*<br/>*/}
+                  <input type="text" name="hnoanamese_chron_nasensprayabusus_seit" onKeyUp={contactHnoAnamneseNasenAbususSeit}/>
                 </label>
             </li>
           </ul>
         </li>
         
-        
+        {/*<br/>*/}
         <li className={styles.li}>
           <label className={styles.label}>
             <input type="checkbox" name="hnoanamnese" value="Lippen-Kiefer-Gaumenspalte" onChange={contactHnoAnamnese}/>
@@ -521,32 +395,32 @@ export default function Page({ params : {contactid} }) {
           <ul className={styles.ul}>
             <li className={styles.li}>
               <label className={styles.label}>
-                <input type="radio" data-id="rDP1C479njAjf63wClM9" name="lippen_kiefer_gaumenspalte_opt" value="Lippee" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
+                <input type="radio" name="rDP1C479njAjf63wClM9" value="Lippee" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
                 Lippe
               </label>
             </li>
             <li className={styles.li}>
               <label className={styles.label}>
-                <input type="radio" data-id="rDP1C479njAjf63wClM9" name="lippen_kiefer_gaumenspalte_opt" value="Kiefer" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
+                <input type="radio" name="rDP1C479njAjf63wClM9" value="Kiefer" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
                 Kiefer
               </label>
             </li>
             <li className={styles.li}>
               <label className={styles.label}>
-                <input type="radio" data-id="rDP1C479njAjf63wClM9" name="lippen_kiefer_gaumenspalte_opt" value="harter Gaumen" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
+                <input type="radio" name="rDP1C479njAjf63wClM9" value="harter Gaumen" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
                 harter Gaumen
               </label>
             </li>
             <li className={styles.li}>
               <label className={styles.label}>
-                <input type="radio" data-id="rDP1C479njAjf63wClM9" name="lippen_kiefer_gaumenspalte_opt" value="weicher Gaumen" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
+                <input type="radio" name="rDP1C479njAjf63wClM9" value="weicher Gaumen" onChange={contactHnoAnamneseLippenKieferGaumenspalte}/>
                 weicher Gaumen
               </label>
             </li>
           </ul>
         </li>
         
-        
+        {/*<br/>*/}
         <li className={styles.li}>
           <label className={styles.label}>
             <input type="checkbox" name="hnoanamnese" value="Sonstiges" onChange={contactHnoAnamnese}/>
@@ -555,7 +429,7 @@ export default function Page({ params : {contactid} }) {
           <ul className={styles.ul}>
             <li className={styles.li}>
                 <label className={styles.label}>HNO-ANAMESE_Sonstiges
-                
+                {/*<br/>*/}
                   <input type="text" name="hnoanamese_sonstiges" onKeyUp={contactHnoAnamneseSonstiges}/>
                 </label>
             </li>
@@ -564,7 +438,7 @@ export default function Page({ params : {contactid} }) {
       </ul>
 
       
-      
+      {/*<br/>*/}
       <button type="submit" onClick={onSubmit}>Submit</button>
       <button onClick={refreshAccessToken}>Refresh Authorization</button>
     </form>
