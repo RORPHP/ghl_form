@@ -1,0 +1,15 @@
+.header-logo , .footer-logo {
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+.header-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}

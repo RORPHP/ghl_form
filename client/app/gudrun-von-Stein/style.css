@@ -1,0 +1,132 @@
+body {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+.form-section {
+    background-color: #f0f0f0;
+    max-width: 56rem;
+    padding: 1.25rem;
+    margin: 0  auto;
+    font-family: 'Inter', sans-serif;
+}
+.form-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.form-section label {
+    font-size: 16px;
+}
+.form-section input {
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.form-section input:focus {
+    outline: none;
+}
+.form-section input::placeholder {
+    color: #000000;
+    opacity: 0.8;
+}
+.form-section .form-heading {
+    text-align: left;
+    margin: 30px auto;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid #000000;
+}
+.sub-heading {
+    margin-bottom: 0;
+    margin-top: 20px;
+    font-size: 16px;
+}
+p {
+    font-size: 16px;
+    line-height: 1.4;
+}
+.underline-text {
+    text-decoration: underline;
+}
+.c200-row {
+    display: flex;
+    justify-content: center;
+    grid-gap: 60px;
+}
+.border-box {
+    border: 1px solid #000000;
+    padding: 0 20px;
+}
+.border-box ol li {
+    margin-bottom: 10px;
+}
+.list-content h4 {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+a {
+    color: blue;
+}
+.list-content ul li {
+    line-height: 1.5;
+    padding-left: 40px;
+    position: relative;
+}
+.list-content ul li::before {
+    background-image: url('/arrow.png');
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 19px;
+    left: 15px;
+    top: 2px;
+}
+.footer-logo {
+    text-align: center;
+}
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+.header-logo {
+    text-align: center;
+}
+.header-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}
+.info-form .input-full-w {
+    grid-column: span 2;
+}
+.radio-row {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+}
+.info-form .radio-row label {
+    margin-right: 10px;
+    margin-top: 0;
+}            
+.info-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 20px;
+    margin: 20px auto;
+}
+.form-section select {
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.form-section select:focus {
+    outline: none;
+}
+.info-form li {
+    display: flex;
+    flex-direction: column;
+}
