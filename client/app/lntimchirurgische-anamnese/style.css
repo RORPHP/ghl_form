@@ -114,3 +114,49 @@ p {
     padding-left: 0;
     margin-bottom: 4px;
 }
+
+
+/*Responsive*/
+
+
+.date-location-row .sigCanvas {
+    width: 100%;
+}
+.date-location-row button {
+    border: none;
+    background: #6f7177;
+    padding: 10px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: .3s ease-in-out;
+}
+.date-location-row button:Hover {
+    opacity: 0.8;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.one-col-row li {
+    display: flex;
+    align-items: flex-start;
+}
+@media (max-width: 1199px) {
+    .form-section .date-location-row .border-input {
+       width: 100%; 
+    }
+}
+@media (max-width: 767px) {  
+    .date-location-row,
+    .info-form {
+        grid-template-columns: 1fr;
+    }  
+    .info-form .input-full-w {
+        grid-column: span 1;
+    } 
+}

@@ -130,3 +130,26 @@ a {
     display: flex;
     flex-direction: column;
 }
+
+/*Responsive*/
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767px) {  
+    .info-form {
+        grid-template-columns: 1fr;
+    }
+    .info-form .input-full-w {
+        grid-column: span 1;
+    }
+    .c200-row {
+        flex-direction: column;
+        grid-gap: 10px;
+    }
+}
+

@@ -134,3 +134,47 @@ p {
     display: flex;
     flex-direction: column;
 }
+
+/*Responsive*/
+
+.date-location-row .sigCanvas {
+    width: 100%;
+}
+.date-location-row button {
+    border: none;
+    background: #6f7177;
+    padding: 10px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: .3s ease-in-out;
+}
+.date-location-row button:Hover {
+    opacity: 0.8;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media (max-width: 1199px) {
+    .form-section .date-location-row .border-input {
+       width: 100%; 
+    }
+}
+@media (max-width: 767px) {  
+    .info-form, .date-location-row {
+        grid-template-columns: 1fr;
+    }
+    .info-form .input-full-w {
+        grid-column: span 1;
+    }
+    .form-section .form-heading {
+        margin: 15px auto;
+        font-size: 16px;
+    }
+}
+
