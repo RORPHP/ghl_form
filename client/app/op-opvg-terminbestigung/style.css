@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+.form-section {
+    background-color: #f0f0f0;
+    max-width: 56rem;
+    padding: 1.25rem;
+    margin: 0  auto;
+    font-family: 'Inter', sans-serif;
+}
+.form-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.form-section label {
+    font-size: 16px;
+}
+.form-section input {
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.form-section input:focus {
+    outline: none;
+}
+.form-section input::placeholder {
+    color: #000000;
+    opacity: 0.5;
+}
+p {
+    font-size: 16px;
+    line-height: 1.4;
+}
+.signatur-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: center;
+}
+.signatur-row li:first-child {
+    font-weight: 600;
+    margin-right: 10px;
+}
+.signatur-row li {
+    font-size: 16px;
+    width: 100%;
+}
+.signatur-row input {
+    width: 100%;
+    box-sizing: border-box;
+}
+.form-section input.border-input {
+    border-bottom: 1px solid #000000;
+    background: transparent;
+    border-radius: unset;
+    padding: 0px 10px;
+    margin-left: 6px;
+}
+ul li {
+    margin-bottom: 6px;
+}
+.text-center {
+    text-align: center;
+}
+.underline {
+    text-decoration: underline;
+}
+.input-row {
+    margin: 20px 0;
+    text-align: right;
+}
+.footer-logo {
+    text-align: center;
+}
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+.header-logo {
+    text-align: center;
+}
+.header-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}
+.info-form .input-full-w {
+    grid-column: span 2;
+}
+.radio-row {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+}
+.info-form .radio-row label {
+    margin-right: 10px;
+    margin-top: 0;
+}            
+.info-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 20px;
+    margin: 20px auto;
+}
+.form-section select {
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+.form-section select:focus {
+    outline: none;
+}
+.info-form li {
+    display: flex;
+    flex-direction: column;
+}
