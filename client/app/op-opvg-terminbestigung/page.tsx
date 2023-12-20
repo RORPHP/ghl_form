@@ -10,7 +10,7 @@ export default function Page() {
   const onCheckboxChange = (e,key=false,is_array=false,child_text=false,parent_key=false,parent_value=false,child_key=false) => {
     var data = formData;
 
-    // console.log(key,is_array,child_text,parent_key,child_key)
+    console.log(key,is_array,child_text,parent_key,child_key)
 
     if(parent_key){
       parent = makeKey(parent_key)
@@ -26,7 +26,7 @@ export default function Page() {
 
       if(key){
         key = makeKey(key)
-        var arr = data.hasOwnProperty(key) == false ? [] :  data[key]
+        var arr = data.hasOwnProperty(key) == false ? [] :  (Array.isArray(data[key]) ? data[key] : [])
         if(e.target.checked){
           arr.push(e.target.value)
 

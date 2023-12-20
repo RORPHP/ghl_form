@@ -25,7 +25,10 @@ export default function Page() {
 
       if(key){
         key = makeKey(key)
-        var arr = data.hasOwnProperty(key) == false ? [] :  data[key]
+        var arr = data.hasOwnProperty(key) == false ? [] :  (Array.isArray(data[key]) ? data[key] : [])
+
+        // console.log(data[key],Array.isArray(data[key]))
+        console.log(arr)
         if(e.target.checked){
           arr.push(e.target.value)
           

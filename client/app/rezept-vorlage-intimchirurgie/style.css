@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.form-section {
+    background-color: #f0f0f0;
+    max-width: 56rem;
+    padding: 1.25rem;
+    margin: 0  auto;
+    font-family: 'Inter', sans-serif;
+}
+.form-section .form-heading {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 22px;
+    font-weight: 600;
+}
+.form-section p {
+    font-size: 16px;
+    color: #000000;
+    margin: 10px 0;
+}
+.footer-logo,
+.header-logo {
+    text-align: center;
+}
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+.header-logo img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}

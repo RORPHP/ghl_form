@@ -119,3 +119,29 @@ ul li {
     display: flex;
     flex-direction: column;
 }
+
+/*Responsive*/
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+    .info-form {
+        grid-template-columns: 1fr;
+    }
+    .info-form .input-full-w {
+        grid-column: span 1;
+    }  
+    .input-row {
+        text-align: left;
+    }    
+    .form-section input.border-input {
+        width: 100%;
+        margin: 10px 0 0;
+        padding-left: 0;
+    }
+}
