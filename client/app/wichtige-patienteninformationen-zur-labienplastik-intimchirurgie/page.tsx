@@ -277,8 +277,8 @@ export default function Page() {
     <p>Sehr geehrte Patientin,</p>
     <p>wir möchten die von Ihnen beabsichtigte Intimoperation so sicher wie möglich durchführen. Bitte lesen Sie alle folgenden Seiten gründlich vor dem OP-Vorgespräch durch und notieren Sie sich eventuelle Fragen!</p>
     <h4 className="sub-heading text-center text-underline">OP-VORBEREITUNG:</h4>
-    <p>Bitte lesen Sie <span class="text-underline">gründlich</span> alle Unterlag en in der weißen Mappe durch!</p>
-    <p><strong>6 Wochen vor der OP:</strong> Verpflichtende Untersuchungen beim <span class="text-underline">Hausarzt/Internisten</span> mit <span className="text-underline">Körpercheck, EKG und Blutentnahme</span> (Sie erhalt en im Beratungsgespräch in der weißen Mappe Formulare dazu, welche der Hausarzt ausfüllen muss). Bitte beachten Sie, dass ältere Befunde nicht gültig und gewisse Untersuchungen kostenpflichtig sind !</p>
+    <p>Bitte lesen Sie <span className="text-underline">gründlich</span> alle Unterlag en in der weißen Mappe durch!</p>
+    <p><strong>6 Wochen vor der OP:</strong> Verpflichtende Untersuchungen beim <span className="text-underline">Hausarzt/Internisten</span> mit <span className="text-underline">Körpercheck, EKG und Blutentnahme</span> (Sie erhalt en im Beratungsgespräch in der weißen Mappe Formulare dazu, welche der Hausarzt ausfüllen muss). Bitte beachten Sie, dass ältere Befunde nicht gültig und gewisse Untersuchungen kostenpflichtig sind !</p>
     <p><strong>4 Wochen vor der OP:</strong> <span className="text-underline">OP-Vorgespräch in der Praxis</span>. Bezahlung des OP-Honorars erfolgt an diesem Termin. Bitte bringen Sie Folgendes mit:</p>
     <ol>
         <li>Alle Befunde der von uns angeordneten Voruntersuchungen (Hausarzt etc.)</li>
@@ -299,7 +299,7 @@ export default function Page() {
     <p><strong>Am Tag vor der Operation:</strong></p>
     <ul>
         <li><span>-</span> Unterstützen Sie uns bei den Hygienemaßnahmen und rasieren Sie sich den Intimbereich vollständig.</li>
-        <li><span>-</span> <p>Antithrombosespritze am <span class="text-underline">Abend vor der OP</span> gegen 18 Uhr in das Bauch-/Oberschenkelfett injizieren. Wir demonstrieren Ihnen in der Praxis, wie Sie sich die Antithrombosespritze spritzen sollten und geben Ihnen ein Rezept zum OP-Vorgespräch mit (Lagerung bei max. 25°C). Bei Schwierigkeiten der eigenständigen Verabreichung wenden Sie sich bitte rechtzeitig an Ihren Hausarzt oder auch gerne an uns.</p></li>
+        <li><span>-</span> <p>Antithrombosespritze am <span className="text-underline">Abend vor der OP</span> gegen 18 Uhr in das Bauch-/Oberschenkelfett injizieren. Wir demonstrieren Ihnen in der Praxis, wie Sie sich die Antithrombosespritze spritzen sollten und geben Ihnen ein Rezept zum OP-Vorgespräch mit (Lagerung bei max. 25°C). Bei Schwierigkeiten der eigenständigen Verabreichung wenden Sie sich bitte rechtzeitig an Ihren Hausarzt oder auch gerne an uns.</p></li>
         <li><span>-</span> Am Tag vor der OP werden Sie von der Klinik angerufen. Ihnen wird die genaue Uhrzeit, zu der Sie bitte am OP-Tag in der Klinik erscheinen sollen, mitgeteilt. Es kann zu kurzfristigen Änderungen kommen.</li>
     </ul>
     <p><strong>Am Tag der Operation:</strong></p>
