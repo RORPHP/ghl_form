@@ -445,7 +445,7 @@ export default function Page() {
                 <div style={{height: '80vh'}}>
                     <PinturaEditor
                         {...getEditorDefaults()}
-                        src="image.png"
+                        src="incision_in_intimate_surgery.png"
                         onProcess={async (res) => {
 
                             // formData.patient_img = URL.createObjectURL(res.dest) //returns blob
